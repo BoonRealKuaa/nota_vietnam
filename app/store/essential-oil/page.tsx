@@ -2,120 +2,103 @@ import Image from 'next/image'
 import Link from 'next/link'
 import Nav from '@/components/nav'
 import Footer from '@/components/footer'
-
-const oils = [
-  {
-    name: 'Amber Glow',
-    scent: 'Warm & Woody',
-    price: '490.000₫',
-    slug: 'amber-glow',
-    img: '/img/z7667935998253_9c3fa8bedb29c8aca9f2be56ba3edab7.jpg',
-  },
-  {
-    name: 'Golden Dusk',
-    scent: 'Earthy & Rich',
-    price: '490.000₫',
-    slug: 'golden-dusk',
-    img: '/img/z7667935998271_381470b5cbe6908cca2df1e3b7e07933.jpg',
-  },
-  {
-    name: 'Ivory Mist',
-    scent: 'Soft & Powdery',
-    price: '490.000₫',
-    slug: 'ivory-mist',
-    img: '/img/z7667936053077_773327021f2e5af87b0a3873194c79e6.jpg',
-  },
-  {
-    name: 'Sage Breeze',
-    scent: 'Fresh & Herbal',
-    price: '490.000₫',
-    slug: 'sage-breeze',
-    img: '/img/z7667936107521_f271b8ae1717570f6a7f20c14d8bbc3c.jpg',
-  },
-  {
-    name: 'Blanc Silk',
-    scent: 'Clean & Airy',
-    price: '490.000₫',
-    slug: 'blanc-silk',
-    img: '/img/z7667936107613_bfbba8984c8d5219717a2b6cd1a40cc5.jpg',
-  },
-  {
-    name: 'Forest Calm',
-    scent: 'Green & Earthy',
-    price: '490.000₫',
-    slug: 'forest-calm',
-    img: '/img/z7667936162457_7e9f7a37998da19a3c2f84e04ee5fb50.jpg',
-  },
-  {
-    name: 'Lavender Haze',
-    scent: 'Floral & Relaxing',
-    price: '490.000₫',
-    slug: 'lavender-haze',
-    img: '/img/z7667936217365_549513528605e3bca02bb2a1a838e770.jpg',
-  },
-  {
-    name: 'Rose Petal',
-    scent: 'Sweet & Floral',
-    price: '490.000₫',
-    slug: 'rose-petal',
-    img: '/img/z7667936217483_078f7c22525f1bce41edd6035f1f50c4.jpg',
-  },
-  {
-    name: 'Mint Frost',
-    scent: 'Cool & Refreshing',
-    price: '490.000₫',
-    slug: 'mint-frost',
-    img: '/img/z7667936273215_4f6d0e0c1573aa472b824a335f8522ac.jpg',
-  },
-  {
-    name: 'Celadon Dream',
-    scent: 'Light & Aquatic',
-    price: '490.000₫',
-    slug: 'celadon-dream',
-    img: '/img/z7667936327629_a81c42a5873a8ec2910deec4fb301d22.jpg',
-  },
-]
+import Reveal from '@/components/reveal'
+import { essentialOils, diffusers } from '@/lib/products'
 
 export default function EssentialOilPage() {
   return (
     <>
       <Nav />
       <main className="min-h-screen bg-white">
-        {/* Header */}
+        {/* ── Essential Oil Section ── */}
         <div className="max-w-7xl mx-auto px-6 pt-16 pb-12">
-          <div className="flex flex-col gap-2 mb-2">
-            <div className="flex items-center gap-2 text-xs text-muted uppercase tracking-widest font-medium">
+          <Reveal>
+            <div className="flex items-center gap-2 text-xs text-muted uppercase tracking-widest font-medium mb-2">
               <Link href="/store" className="hover:text-dark transition-colors">Store</Link>
               <span>/</span>
               <span>Essential Oil</span>
             </div>
-            <h1 className="text-4xl md:text-5xl font-black text-dark">Essential Oil</h1>
-          </div>
-          <div className="flex items-center justify-between border-b border-subtle pb-6">
-            <p className="text-muted text-sm">{oils.length} sản phẩm</p>
+            <h1 className="text-4xl md:text-5xl font-black text-dark mb-6">Essential Oil</h1>
+            <div className="border-b border-subtle pb-6">
+              <p className="text-muted text-sm">{essentialOils.length} products</p>
+            </div>
+          </Reveal>
+        </div>
+
+        <div className="max-w-7xl mx-auto px-6 pb-24">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 md:gap-6">
+            {essentialOils.map((oil, i) => (
+              <Reveal key={oil.slug} delay={i * 60}>
+                <Link href={`/store/essential-oil/${oil.slug}`} className="group flex flex-col gap-3">
+                  <div className="relative aspect-[4/5] w-full overflow-hidden rounded-2xl bg-white border border-subtle">
+                    <Image
+                      src={oil.img}
+                      alt={oil.name}
+                      fill
+                      className="object-contain p-3 transition-opacity duration-300 group-hover:opacity-0"
+                      sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                    />
+                    <Image
+                      src={oil.ingredients}
+                      alt={`${oil.name} ingredients`}
+                      fill
+                      className="object-contain p-3 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+                      sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                    />
+                  </div>
+                  <div className="flex flex-col gap-0.5 px-1">
+                    <p className="text-xs text-muted">{oil.scent}</p>
+                    <p className="text-sm font-semibold text-dark leading-snug">{oil.name}</p>
+                    <p className="text-sm text-dark">{oil.price}</p>
+                  </div>
+                </Link>
+              </Reveal>
+            ))}
           </div>
         </div>
 
-        {/* Grid */}
+        {/* ── Divider ── */}
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="border-t border-subtle" />
+        </div>
+
+        {/* ── Diffuser Section ── */}
+        <div className="max-w-7xl mx-auto px-6 pt-16 pb-12">
+          <Reveal>
+            <h2 className="text-3xl md:text-4xl font-black text-dark mb-2">Diffuser</h2>
+            <p className="text-muted text-sm mb-6">{diffusers.length} products</p>
+            <div className="border-b border-subtle" />
+          </Reveal>
+        </div>
+
         <div className="max-w-7xl mx-auto px-6 pb-24">
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 md:gap-6">
-            {oils.map((oil) => (
-              <div key={oil.slug} className="group flex flex-col gap-3 cursor-pointer">
-                <div className="relative aspect-[3/4] w-full overflow-hidden rounded-2xl bg-surface">
-                  <Image
-                    src={oil.img}
-                    alt={oil.name}
-                    fill
-                    className="object-contain p-4 group-hover:scale-105 transition-transform duration-500"
-                    sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
-                  />
-                </div>
-                <div className="flex flex-col gap-0.5 px-1">
-                  <p className="text-xs text-muted">{oil.scent}</p>
-                  <p className="text-sm font-semibold text-dark leading-snug">{oil.name}</p>
-                  <p className="text-sm font-bold text-dark mt-1">{oil.price}</p>
-                </div>
-              </div>
+          <div className="flex flex-col gap-5">
+            {diffusers.map((d, i) => (
+              <Reveal key={d.slug} delay={i * 80}>
+                <Link
+                  href={`/store/diffuser/${d.slug}`}
+                  className="group flex gap-6 items-center p-5 rounded-2xl border border-subtle bg-white hover:border-dark transition-colors"
+                >
+                  <div className="relative shrink-0 w-28 h-28 rounded-xl overflow-hidden bg-surface">
+                    <Image
+                      src={d.img}
+                      alt={d.name}
+                      fill
+                      className="object-contain p-2"
+                      sizes="112px"
+                    />
+                  </div>
+                  <div className="flex flex-col gap-1 flex-1">
+                    <p className="text-xs text-muted uppercase tracking-wider font-medium">{d.type}</p>
+                    <p className="text-lg font-bold text-dark group-hover:text-accent transition-colors">{d.name}</p>
+                    <p className="text-sm text-muted leading-relaxed line-clamp-2">{d.description}</p>
+                  </div>
+                  <div className="shrink-0 text-right">
+                    <p className="text-base font-bold text-dark">{d.price}</p>
+                    <p className="text-xs text-muted mt-1 group-hover:text-dark transition-colors">View →</p>
+                  </div>
+                </Link>
+              </Reveal>
             ))}
           </div>
         </div>

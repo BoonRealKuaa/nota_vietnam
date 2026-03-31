@@ -4,8 +4,8 @@ const nav = [
   { label: 'Home', href: '/' },
   { label: 'Store', href: '/store' },
   { label: 'Blog', href: '/blog' },
-  { label: 'Our methods', href: '/our-methods' },
-  { label: 'Support', href: '/support' },
+  { label: 'About us', href: '/our-methods' },
+  { label: 'Contact', href: '/support' },
 ]
 
 const legal = [
@@ -54,10 +54,10 @@ export default function Footer() {
           {/* Brand */}
           <div className="md:col-span-2 flex flex-col gap-5">
             <Link href="/" className="text-white font-bold text-xl tracking-tight">
-              ESSENTIAL
+              NOTA
             </Link>
             <p className="text-white/50 text-sm leading-relaxed max-w-xs">
-              Natural tools and curated products designed to elevate your everyday lifestyle.
+              Pure Vietnamese essential oils — distilled from clean natural ingredients, handcrafted with care.
             </p>
             <div className="flex items-center gap-3">
               {socials.map((s) => (
@@ -110,8 +110,8 @@ export default function Footer() {
 
         {/* Bottom bar */}
         <div className="border-t border-white/10 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-white/30">
-          <p>© {new Date().getFullYear()} Essential. All rights reserved.</p>
-          <p>Crafted with care for your lifestyle.</p>
+          <p>© {new Date().getFullYear()} NOTA Vietnam. All rights reserved.</p>
+          <p>Pure by nature. Crafted with care.</p>
         </div>
       </div>
     </footer>

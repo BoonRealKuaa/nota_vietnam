@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { DM_Sans, Playfair_Display } from 'next/font/google'
 import './globals.css'
+import BackToTop from '@/components/back-to-top'
 
 const dmSans = DM_Sans({
   subsets: ['latin'],
@@ -15,7 +16,7 @@ const playfair = Playfair_Display({
 })
 
 export const metadata: Metadata = {
-  title: 'Essential — Natural Skincare & Lifestyle Store',
+  title: 'Notavietnam',
   description: 'Natural tools and curated products designed to elevate your lifestyle.',
 }
 
@@ -28,6 +29,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${dmSans.variable} ${playfair.variable} font-sans antialiased`}>
         {children}
+        <BackToTop />
       </body>
     </html>
   )

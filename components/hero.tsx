@@ -3,32 +3,35 @@ import Link from 'next/link'
 
 export default function Hero() {
   return (
-    <section id="hero" className="min-h-[calc(100vh-4rem)] bg-white flex items-center overflow-hidden">
-      <div className="max-w-7xl mx-auto px-6 w-full py-20 grid md:grid-cols-2 gap-12 items-center">
+    <section id="hero" className="relative min-h-screen bg-dark overflow-hidden flex items-center">
+      {/* Dark background only */}
+      <div className="absolute inset-0 z-0 bg-dark" />
+
+      <div className="relative z-10 max-w-7xl mx-auto px-6 w-full pt-8 pb-0 grid md:grid-cols-2 gap-12 items-center">
         {/* Text */}
         <div className="flex flex-col gap-8">
           <div className="flex flex-col gap-4">
-            <p className="text-sm text-muted tracking-widest uppercase font-medium">
-              Natural &amp; Curated
+            <p className="animate-fade-in-up text-sm text-white/50 tracking-widest uppercase font-medium">
+              Natural Essential Oils — Pure &amp; Refined
             </p>
-            <h1 className="font-sans font-black text-5xl md:text-6xl lg:text-7xl text-dark leading-[1.05] tracking-tight">
-              Built To Buy,{' '}
-              <span className="font-serif italic font-normal text-muted">
-                Designed
+            <h1 className="animate-fade-in-up animation-delay-100 font-sans font-black text-5xl md:text-6xl lg:text-7xl text-white leading-[1.05] tracking-tight">
+              Invisible{' '}
+              <span className="font-serif italic font-normal text-white/50">
+                Architecture
               </span>{' '}
-              To Delight.
+              For Your Space.
             </h1>
-            <p className="text-muted text-lg max-w-md leading-relaxed">
-              Natural tools and curated products designed to elevate your lifestyle.
+            <p className="animate-fade-in-up animation-delay-200 text-white/60 text-lg max-w-md leading-relaxed">
+              Each NOTA essential oil is extracted from carefully selected natural ingredients — delivering a refined aromatic experience that nurtures your mind.
             </p>
           </div>
 
-          <div className="flex items-center gap-4">
+          <div className="animate-fade-in-up animation-delay-300 flex items-center gap-4">
             <Link
               href="/store"
-              className="bg-accent text-white font-semibold px-8 py-3.5 rounded-full hover:bg-dark transition-colors inline-flex items-center gap-2"
+              className="bg-white text-dark font-semibold px-8 py-3.5 rounded-full hover:bg-accent hover:text-white transition-colors inline-flex items-center gap-2"
             >
-              Explore Store
+              Explore the Collection
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2">
                 <line x1="3" y1="8" x2="13" y2="8" />
                 <polyline points="9 4 13 8 9 12" />
@@ -36,39 +39,46 @@ export default function Hero() {
             </Link>
             <Link
               href="#about"
-              className="text-sm text-dark font-medium underline underline-offset-4 hover:text-accent transition-colors"
+              className="text-sm text-white/60 font-medium underline underline-offset-4 hover:text-white transition-colors"
             >
               Learn more
             </Link>
           </div>
 
-          {/* Stats */}
-          <div className="flex items-center gap-8 pt-4 border-t border-subtle">
+          {/* Trust signals */}
+          <div className="animate-fade-in-up animation-delay-500 flex items-center gap-8 pt-4 border-t border-white/10">
             <div>
-              <p className="text-2xl font-bold text-dark">1,200+</p>
-              <p className="text-xs text-muted mt-0.5">Products sold monthly</p>
+              <p className="text-2xl font-bold text-white">100%</p>
+              <p className="text-xs text-white/40 mt-0.5">Natural ingredients</p>
             </div>
-            <div className="w-px h-10 bg-subtle" />
+            <div className="w-px h-10 bg-white/10" />
             <div>
-              <p className="text-2xl font-bold text-dark">230k+</p>
-              <p className="text-xs text-muted mt-0.5">Happy customers</p>
+              <p className="text-2xl font-bold text-white">Zero</p>
+              <p className="text-xs text-white/40 mt-0.5">Harmful chemicals</p>
+            </div>
+            <div className="w-px h-10 bg-white/10" />
+            <div>
+              <p className="text-2xl font-bold text-white">10+</p>
+              <p className="text-xs text-white/40 mt-0.5">Signature product lines</p>
             </div>
           </div>
         </div>
 
-        {/* Image */}
-        <div className="relative flex justify-center md:justify-end">
-          <div className="relative w-72 h-[520px] md:w-80 md:h-[600px] lg:w-96 lg:h-[680px]">
-            {/* Background blob */}
-            <div className="absolute inset-0 rounded-[40%_60%_60%_40%/50%_50%_70%_30%] bg-surface" />
-            <Image
-              src="/images/hero/product-hero.png"
-              alt="Natural skincare product"
-              fill
-              className="object-contain object-center relative z-10 drop-shadow-2xl"
-              priority
-              sizes="(max-width: 768px) 288px, (max-width: 1024px) 320px, 384px"
-            />
+        {/* Floating diffuser */}
+        <div className="flex justify-center md:justify-end items-center translate-x-16">
+          <div className="animate-fade-in-up animation-delay-300">
+            <div className="animate-float">
+              <div className="relative w-[440px] md:w-[560px] lg:w-[680px] h-[620px] md:h-[760px] lg:h-[900px] hover-sway">
+                <Image
+                  src="/img/diffuser-white-hero.png"
+                  alt="NOTA Diffuser"
+                  fill
+                  className="object-contain object-center drop-shadow-2xl"
+                  priority
+                  sizes="(max-width: 768px) 340px, (max-width: 1024px) 420px, 500px"
+                />
+              </div>
+            </div>
           </div>
         </div>
       </div>

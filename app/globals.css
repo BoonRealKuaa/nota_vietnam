@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 :root {
-  --accent: #ff462e;
+  --accent: #8C7355;
   --dark: #171717;
   --muted: #575757;
   --subtle: #ebebeb;
@@ -29,6 +29,88 @@ body {
 }
 
 ::selection {
-  background: #ff462e;
+  background: #8C7355;
   color: #fff;
+}
+
+@keyframes float {
+  0%, 100% { translate: 0 0px; }
+  50% { translate: 0 -14px; }
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.7s ease-out both;
+}
+
+@keyframes fade-in-left {
+  from {
+    opacity: 0;
+    transform: translateX(-32px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-fade-in-left {
+  animation: fade-in-left 0.7s ease-out both;
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  animation: marquee 20s linear infinite;
+  will-change: transform;
+}
+
+.animate-blog-marquee {
+  animation: marquee 40s linear infinite;
+  will-change: transform;
+}
+
+@keyframes sway {
+  0%, 100% { transform: rotate(-3deg); }
+  50% { transform: rotate(3deg); }
+}
+
+.hover-sway:hover {
+  animation: sway 1.2s ease-in-out infinite;
+}
+
+.animation-delay-100 { animation-delay: 0.1s; }
+.animation-delay-200 { animation-delay: 0.2s; }
+.animation-delay-300 { animation-delay: 0.3s; }
+.animation-delay-500 { animation-delay: 0.5s; }
+.animation-delay-700 { animation-delay: 0.7s; }
+
+/* Scroll reveal */
+.reveal {
+  opacity: 0;
+  transition: opacity 0.65s cubic-bezier(0.4, 0, 0.2, 1), transform 0.65s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.reveal-up { transform: translateY(28px); }
+.reveal-left { transform: translateX(-28px); }
+.reveal-fade { transform: translateY(0); }
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
 }

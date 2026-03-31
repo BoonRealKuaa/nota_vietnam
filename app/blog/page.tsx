@@ -61,7 +61,7 @@ export default function BlogPage() {
       <main className="min-h-screen bg-white">
         {/* Header */}
         <div className="max-w-7xl mx-auto px-6 pt-16 pb-12 border-b border-subtle">
-          <p className="text-xs text-muted uppercase tracking-widest font-medium mb-2">Journal</p>
+          <p className="text-xs text-muted uppercase tracking-widest font-medium mb-2">Blog</p>
           <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
             <h1 className="text-4xl md:text-5xl font-black text-dark">
               Explore Beauty Reads
